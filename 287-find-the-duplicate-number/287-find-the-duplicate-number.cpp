@@ -14,9 +14,7 @@ public:
                 res = nums[i];
             }
             
-        }
-        
-    
+        } 
     return res;
     } 
 };
