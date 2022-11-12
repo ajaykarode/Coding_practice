@@ -12,10 +12,17 @@ class Solution {
 public:
     int getDecimalValue(ListNode* head) {
        
-        int res = 0;
-        while(head != NULL){
-            res = (res<< 1) + (head->val) ;
+//         int res = 0;
+//         while(head != NULL){
+//             res = (res<< 1) + (head->val) ;
         
+//             head = head->next;
+//         }
+//         return res;
+        
+        int res = head->val;
+        while(head->next){
+            res = (res*2) + head->next->val;
             head = head->next;
         }
         return res;
