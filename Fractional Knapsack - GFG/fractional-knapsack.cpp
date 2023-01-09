@@ -42,7 +42,7 @@ class Solution
             }
             else{
                 int remain = W - cweight;
-                profit += ((double)arr[i].value/arr[i].weight) * (double)remain;
+                profit += ((double)arr[i].value/arr[i].weight) * remain;
                 break;
             }
         }
