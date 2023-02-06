@@ -26,6 +26,10 @@ class Solution
     public:
     vector<vector<int> > subsets(vector<int>& A)
     {
+        
+        
+        
+        
         //code here
         vector<vector<int>>ans;
         vector<int> output;
