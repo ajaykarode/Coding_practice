@@ -12,31 +12,45 @@ class Solution
 {
     private:
     void solve(vector<int>A,vector<int>output,int index,vector<vector<int>> & ans){
+        
         if(index >= A.size()){
             ans.push_back(output);
             return;
         }
-        //exclude
+        
         solve(A,output,index+1,ans);
-        //include
-        int res = A[index];
-        output.push_back(res);
+        int b = A[index];
+        output.push_back(b);
         solve(A,output,index+1,ans);
+        
+      
+        // if(index >= A.size()){
+        //     ans.push_back(output);
+        //     return;
+        // }
+        // //exclude
+        // solve(A,output,index+1,ans);
+        // //include
+        // int res = A[index];
+        // output.push_back(res);
+        // solve(A,output,index+1,ans);
     }
     public:
     vector<vector<int> > subsets(vector<int>& A)
     {
-        
-        
-        
-        
-        //code here
+        vector<int>output;
         vector<vector<int>>ans;
-        vector<int> output;
         int index = 0;
         solve(A,output,index,ans);
         sort(ans.begin(),ans.end());
         return ans;
+        //code here
+        // vector<vector<int>>ans;
+        // vector<int> output;
+        // int index = 0;
+        // solve(A,output,index,ans);
+        // sort(ans.begin(),ans.end());
+        // return ans;
     }
 };
 
