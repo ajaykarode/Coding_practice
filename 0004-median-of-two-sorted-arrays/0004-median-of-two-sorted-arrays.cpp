@@ -13,13 +13,16 @@ public:
         
         int n = v.size();
         
-        // int res = 0;
-        // if(n % 2 == 0){
-        //     res = (v[n/2-1]+v[n/2])/2.0;
-        // }
-        // else
-        //     res = v[n/2];     
-        return n%2?v[n/2]:(v[n/2-1]+v[n/2])/2.0;      
+        double res = 0;
+        if(n % 2 == 0){
+            // res = v[n/2];
+            res = (v[n/2] + v[n/2-1])/2.0;
+        }
+        else
+            // res = (v[n/2] + v[n/2-1])/2.00000;
+            res = v[n/2];
+        // return n%2?v[n/2]:(v[n/2-1]+v[n/2])/2.0;
+        return res;
     }
 };
 // n%2?v[n/2]:(v[n/2-1]+v[n/2])/2.0;
