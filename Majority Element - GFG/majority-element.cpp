@@ -18,11 +18,14 @@ class Solution{
         int res = -1;
         // your code here
         unordered_map<int,int>mp;
-        int y;
+        int x,y;
         
         for(int i = 0;i<size;i++){
             mp[a[i]]++;
         }
+        
+        
+        
         
         for(auto y: mp){
             if(y.second > size/2 ){
