@@ -3,7 +3,8 @@
  * struct ListNode {
  *     int val;
  *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode() : val(0), ne
+ xt(nullptr) {}
  *     ListNode(int x) : val(x), next(nullptr) {}
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
@@ -11,18 +12,17 @@
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
-        if(head == NULL || head->next == NULL){
-            return head;
+        int count = 0;
+        ListNode* temp = head;
+        while(temp){
+            count++;
+            temp = temp->next;
         }
-        ListNode* slow = head;
-        ListNode* fast = head;
-        while(fast != NULL && fast->next != NULL){
-            slow = slow->next;
-            fast = fast->next->next;
+        temp = head;
+        for(int i = 0;i<count/2;i++){
+            temp = temp->next;
         }
-        
-        return slow;
-        
+        return temp;
         
     }
 };
