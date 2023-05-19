@@ -1,30 +1,40 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int>ans;
-//         unordered_map<int,int>mp;
-//         for(int i = 0;i<nums.size();i++){
-//             if(mp.find(target - nums[i]) != mp.end()){
-//                 ans.push_back(mp[target - nums[i]]);
-//                 ans.push_back(i);
-                
-//                 return ans;
-                
-//             }
-//             mp[nums[i]] = i;
-//         }
         
-//         return ans;
+        // vector<int>ans;
+        // int n = nums.size();
+        // sort(nums.begin(),nums.end());
+        // int left = 0, right = n-1;
+        // while(left < right){
+        //     int sum = nums[left] + nums[right];
+        //     if(sum == target){
+        //         ans.push_back(left);
+        //         ans.push_back(right);
+        //     }
+        //     else if(sum < target){
+        //         left++;
+        //     }
+        //     else{
+        //         right--;
+        //     }
+        // }
+        // return ans;
         
-        int i ,j;
-        for(i = 0;i<nums.size();i++){
-            for(j = i+1;j<nums.size();j++){
-                if(nums[i] + nums[j] == target){
-                    ans.push_back(i);
-                    ans.push_back(j);
-                }
+        
+        int n = nums.size();
+        unordered_map<int,int>mpp;
+        for(int i = 0;i<n;i++){
+            int num = nums[i];
+            int moreneed = target - num;
+            
+            if(mpp.find(moreneed) != mpp.end()){
+                return {mpp[moreneed], i };
             }
+            mpp[num] = i;
         }
-        return ans;
+        return {-1,-1};
+        
+        
     }
 };
