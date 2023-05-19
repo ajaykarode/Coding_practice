@@ -14,16 +14,14 @@ public:
         if(head == NULL || k == 1){
             return head;
         }
-        ListNode* dummy = new ListNode();
+        ListNode* dummy = new ListNode(0);
         dummy->next = head;
-        ListNode* curr = dummy;
-        ListNode* pre = dummy;
-        ListNode* nex = dummy;
+        
+        ListNode* pre = dummy, *nex = dummy,*curr = dummy;
         int count = 0;
-        while(head != NULL){
-            head = head->next;
+        while(curr->next!= NULL){
+            curr = curr->next;
             count++;
-            
         }
         while(count >= k){
             curr = pre->next;
@@ -32,15 +30,11 @@ public:
                 curr->next = nex->next;
                 nex->next = pre->next;
                 pre->next = nex;
-                nex = curr->next;
-                
+                nex= curr->next;
             }
             pre = curr;
-            count -= k;
+            count-=k;
         }
         return dummy->next;
-        
-        
-        
     }
 };
