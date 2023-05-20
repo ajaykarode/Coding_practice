@@ -32,6 +32,25 @@ class Solution{
     	    }
     	}
     	return max;
+    
+    // sort(arr,arr+n);
+    // sort(dep,dep+n);
+    // int need = 1, maxi = 1;
+    // int i = 1,j = 0;
+    // while(i<n && j<n){
+    //     if(arr[i] < dep[j]){
+    //         need++;
+    //         i++;
+    //     }
+    //     else if(arr[i] > dep[j]){
+    //         need--;
+    //         j++;
+    //     }
+    //     if(need > maxi){
+    //         maxi = need;
+    //     }
+    // }
+    // return maxi;
     }
 };
 
