@@ -14,76 +14,109 @@ struct Job
 
 
 // } Driver Code Ends
-/*
-struct Job 
-{ 
-    int id;	 // Job Id 
-    int dead; // Deadline of job 
-    int profit; // Profit if job is over before or on deadline 
-};
-*/
+
+
+// class Solution 
+// {
+//     public:
+    
+    // static bool cmp(Job a, Job b){
+    //         return a.profit > b.profit;
+    // }
+    // //Function to find the maximum profit and the number of jobs done.
+    // vector<int> JobScheduling(Job arr[], int n) 
+    // { 
+        
+    //     sort(arr,arr+n,cmp);
+    //     int maxi = arr[0].dead;
+    //     for(int i = 1;i<n;i++){
+    //         maxi = max(maxi,arr[i].dead);
+    //     }
+        
+    //     vector<int>slot(maxi+1, -1);
+        
+        
+    //     int maxprofit = 0,count = 0;
+    //     for(int i = 0;i<n;i++){
+            
+    //         int currProfit = arr[i].profit;
+    //         int currId = arr[i].id;
+    //         int currDead = arr[i].dead;
+            
+    //         for(int j = currDead;j>0;j--){
+    //             if(slot[j] == -1){
+    //                 slot[j] = currId;
+    //                 count++;
+    //                 maxprofit+= currProfit;
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //     vector<int>ans;
+    //     ans.push_back(count);
+    //     ans.push_back(maxprofit);
+    //     return ans;
+        
+//     } 
+// };
+
 
 class Solution 
 {
     public:
-    //function used for sorting all jobs according to decreasing profit.
-    static bool comparison(Job a, Job b) 
-    { 
-    	return (a.profit > b.profit); 
-    } 
     
-    //Function to find the maximum profit and the number of jobs done.
-    vector<int> JobScheduling(Job arr[], int n) 
-    { 
-        int res = 0, count = 0;
+    static bool cmp(Job a, Job b){
         
-    	//sorting all jobs according to decreasing order of profit.
-    	sort(arr, arr+n, comparison); 
+        return a.profit > b.profit;
+    }
     
-        //array to store result (Sequence of jobs). 
-    	int result[n];
-    	//boolean array to keep track of free time slots.
-    	bool slot[n]; 
-    
-    	//initializing all slots to free.
-    	for (int i=0; i<n; i++) 
-    		slot[i] = false; 
-    
-    	//iterating through all given jobs.
-    	for (int i=0; i<n; i++) 
-    	{ 
-        	//finding a free slot for current job (Note that we start 
-        	//from the last possible slot). 
-        	for (int j= arr[i].dead-1; j>=0; j--) 
-        	{ 
-        		//if free slot is found, we add current job to result array
-        		//and make the current slot occupied. 
-        		if (slot[j]==false) 
-        		{ 
-        			result[j] = i;  
-        			slot[j] = true; 
-        			break; 
-        		} 
-        	} 
-    	} 
-    
-    	for (int i=0; i<n; i++)
-    	{ 
-    	    //if slot is occupied, we update the counter and 
-    	    //add its profit in final result.
-        	if (slot[i]) {
-        	    count++;
-        	    res += arr[result[i]].profit;
-        	}
-    	}
-    	
-    	//storing the count of jobs and max profit in a list and returning it.
-    	vector<int> ans;
-    	ans.push_back(count);
-    	ans.push_back(res);
-    	return ans;
-    } 
-};
+        vector<int> JobScheduling(Job arr[], int n) {
+            
+            sort(arr,arr+n,cmp);
+            
+            int maxidead = INT_MIN;
+            
+            for(int i = 0;i<n;i++){
+                maxidead = max(maxidead,arr[i].dead);
+            }
+            
+            vector<int>schedule(maxidead+1, -1);
+            
+            int count = 0, profit = 0;
+            
+            for(int i = 0;i<n;i++){
+                int currprofit = arr[i].profit;
+                int currdead = arr[i].dead;
+                int currid = arr[i].id;
+                
+                for(int k = currdead;k>0;k--){
+                    if(schedule[k] == -1){
+                        count++;
+                        profit+= currprofit;
+                        schedule[k] = currid;
+                        break;
+                    }
+                }
+                
+            }
+            vector<int>ans;
+            ans.push_back(count);
+            ans.push_back(profit);
+            return ans;
+            
+            
+        }
+        
+};  
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
 //{ Driver Code Starts.
 // Driver program to test methods 
