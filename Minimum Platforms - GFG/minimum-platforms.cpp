@@ -13,44 +13,44 @@ class Solution{
     int findPlatform(int arr[], int dep[], int n)
     {
     	// Your code here
-    	sort(arr,arr+n);
-    	sort(dep,dep+n);
+    // 	sort(arr,arr+n);
+    // 	sort(dep,dep+n);
     	
-    	int plat_need = 1,max = 1;
-    	int i = 1,j= 0;
-    	while(i<n && j<n){
-    	    if(arr[i] <= dep[j]){
-    	        plat_need++;
-    	        i++;
-    	    }
-    	    else if(arr[i] > dep[j]){
-    	        plat_need--;
-    	        j++;
-    	    }
-    	    if(plat_need > max){
-    	        max = plat_need;
-    	    }
-    	}
-    	return max;
+    // 	int plat_need = 1,max = 1;
+    // 	int i = 1,j= 0;
+    // 	while(i<n && j<n){
+    // 	    if(arr[i] <= dep[j]){
+    // 	        plat_need++;
+    // 	        i++;
+    // 	    }
+    // 	    else if(arr[i] > dep[j]){
+    // 	        plat_need--;
+    // 	        j++;
+    // 	    }
+    // 	    if(plat_need > max){
+    // 	        max = plat_need;
+    // 	    }
+    // 	}
+    // 	return max;
     
-    // sort(arr,arr+n);
-    // sort(dep,dep+n);
-    // int need = 1, maxi = 1;
-    // int i = 1,j = 0;
-    // while(i<n && j<n){
-    //     if(arr[i] < dep[j]){
-    //         need++;
-    //         i++;
-    //     }
-    //     else if(arr[i] > dep[j]){
-    //         need--;
-    //         j++;
-    //     }
-    //     if(need > maxi){
-    //         maxi = need;
-    //     }
-    // }
-    // return maxi;
+    sort(arr,arr+n);
+    sort(dep,dep+n);
+    int need = 1, maxi = 1;
+    int i = 1,j = 0;
+    while(i<n && j<n){
+        if(arr[i] <= dep[j]){
+            need++;
+            i++;
+        }
+        else if(arr[i] > dep[j]){
+            need--;
+            j++;
+        }
+        if(need > maxi){
+            maxi = need;
+        }
+    }
+    return maxi;
     }
 };
 
