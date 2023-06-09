@@ -32,42 +32,87 @@ for (int i=0; i < size; i++)
 // };
 
 
-class Solution
-{
+class data{
     public:
-    //Function to merge k sorted arrays.
-    vector<int> mergeKArrays(vector<vector<int>> arr, int K)
-    {
-        //code here
-        // vector<int>ans;
-        // priority_queue<data,vector<data>,cmp> pq;
-        // for(int i = 0;i<K;i++){
-        //     data d(arr[i][0],i,0);
-        //     pq.push(d);
-        // }
-        
-        // while(!pq.empty()){
-        //     data curr = pq.top(); pq.pop();
-        //     ans.push_back(curr.val);
-        //     int ap = curr.apos, vp = curr.vpos;
-            
-        //     if(vp+1 < arr[ap].size()){
-        //         data d(arr[ap][vp+1],ap,vp+1);
-        //         pq.push(d);
-        //     }
-        // }
-        // return ans;
-        
-        vector<int>nums;
-        for(int i = 0;i<K;i++){
-            for(int j = 0;j<K;j++){
-                nums.push_back(arr[i][j]);
-            }
-        }
-        sort(nums.begin(),nums.end());
-        return nums;
+    int val,apos,vpos;
+    data(int v,int ap,int vp){
+        val = v;
+        apos = ap;
+        vpos = vp;
     }
 };
+
+struct cmp{
+bool operator()(data a,data b){
+    return a.val > b.val;
+}
+};
+
+class Solution{
+    public:
+    vector<int> mergeKArrays(vector<vector<int>> arr, int K){
+        vector<int>ans;
+        priority_queue<data,vector<data>,cmp> pq;
+    
+    for(int i = 0;i<K;i++){
+        data d(arr[i][0],i,0);
+        pq.push(d);
+    }
+    
+    while(!pq.empty()){
+        data curr = pq.top();
+        pq.pop();
+        ans.push_back(curr.val);
+        int ap = curr.apos,vp = curr.vpos;
+        
+        if(vp+1 < arr[ap].size()){
+            data d(arr[ap][vp+1],ap,vp+1);
+            pq.push(d);
+        }
+    }
+    return ans;
+    
+    
+    }
+    
+};
+
+// class Solution
+// {
+//     public:
+//     //Function to merge k sorted arrays.
+//     vector<int> mergeKArrays(vector<vector<int>> arr, int K)
+//     {
+//         //code here
+//         vector<int>ans;
+//         priority_queue<data,vector<data>,cmp> pq;
+//         for(int i = 0;i<K;i++){
+//             data d(arr[i][0],i,0);
+//             pq.push(d);
+//         }
+        
+//         while(!pq.empty()){
+//             data curr = pq.top(); pq.pop();
+//             ans.push_back(curr.val);
+//             int ap = curr.apos, vp = curr.vpos;
+            
+//             if(vp+1 < arr[ap].size()){
+//                 data d(arr[ap][vp+1],ap,vp+1);
+//                 pq.push(d);
+//             }
+//         }
+//         return ans;
+        
+        // vector<int>nums;
+        // for(int i = 0;i<K;i++){
+        //     for(int j = 0;j<K;j++){
+        //         nums.push_back(arr[i][j]);
+        //     }
+        // }
+        // sort(nums.begin(),nums.end());
+        // return nums;
+    // }
+// };
 
 //{ Driver Code Starts.
 
