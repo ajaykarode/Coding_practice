@@ -1,31 +1,63 @@
+// class Solution {
+// public:
+    
+//     vector<int> topKFrequent(vector<int>& nums, int k) {
+        
+        
+//         unordered_map<int,int>umap;
+//         for(auto i: nums){
+//             umap[i]++;
+//         }
+        
+//         priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+        
+//         for(auto x: umap){
+//             pq.push(make_pair(x.second,x.first));
+//             if(pq.size() > k){
+//                 pq.pop();
+//             }
+//         }
+//         vector<int>ans;
+//         while(!pq.empty()){
+//             pair<int,int> temp = pq.top();
+//             pq.pop();
+//             ans.push_back(temp.second);
+            
+//         }
+//         return ans;
+        
+  
+//     }
+// };
+
+
+
+
 class Solution {
 public:
     
     vector<int> topKFrequent(vector<int>& nums, int k) {
         
         
-        unordered_map<int,int>umap;
+        unordered_map<int,int>mp;
         for(auto i: nums){
-            umap[i]++;
+            mp[i]++;
         }
-        
         priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
         
-        for(auto x: umap){
+        for(auto x: mp){
             pq.push(make_pair(x.second,x.first));
-            if(pq.size() > k){
+            if(pq.size()> k){
                 pq.pop();
             }
         }
         vector<int>ans;
         while(!pq.empty()){
-            pair<int,int> temp = pq.top();
+            pair<int,int>temp = pq.top();
             pq.pop();
             ans.push_back(temp.second);
-            
         }
         return ans;
-        
   
     }
 };
