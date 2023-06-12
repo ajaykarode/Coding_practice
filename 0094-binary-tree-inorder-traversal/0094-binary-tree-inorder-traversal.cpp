@@ -32,12 +32,3 @@ public:
         
     }
 };
-
-//     void sandipan(TreeNode* root, vector<int> &ans) {
-//         if(root == NULL)    return;
-//         sandipan(root -> left, ans);
-//         ans.push_back(root -> val);
-//         sandipan(root -> right, ans);
-//     }
-
-// };
