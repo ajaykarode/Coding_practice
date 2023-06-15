@@ -22,16 +22,18 @@ public:
         
         root->right = traversal(preorder, prestart+numsleft + 1,preend,inorder,inroot+1,inend,inmap);
         
-        return root;   
+        return root;
+        
     }
     
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         map<int,int>inmap;
         for(int i = 0;i<inorder.size();i++){
             inmap[inorder[i]] = i;
-        } 
-    return traversal(preorder,0,preorder.size()-1,inorder,0,inorder.size()-1,inmap);
-
+        }
+        
+        TreeNode* root = traversal(preorder,0,preorder.size()-1,inorder,0,inorder.size()-1,inmap);
+            return root;
     }
 };
 
