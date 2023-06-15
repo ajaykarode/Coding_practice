@@ -27,11 +27,10 @@ public:
     
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         map<int,int>inmap;
-        int prestart = 0,preend = preorder.size()-1,instart = 0,inend = inorder.size()-1;
         for(int i = 0;i<inorder.size();i++){
             inmap[inorder[i]] = i;
         } 
-    return traversal(preorder,prestart,preend,inorder,instart,inend,inmap);
+    return traversal(preorder,0,preorder.size()-1,inorder,0,inorder.size()-1,inmap);
 
     }
 };
