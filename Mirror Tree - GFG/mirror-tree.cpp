@@ -109,29 +109,21 @@ struct Node
 
 class Solution {
   public:
-  
     // Function to convert a binary tree into its mirror tree.
     void mirror(Node* node) {
+        // code here
         
-        if(node == NULL) return ;
+        if(node == NULL) return;
+        else{
+            
+            mirror(node->left);
+            mirror(node->right);
+            
+            Node* temp = node->left;
+            node->left = node->right;
+            node->right = temp;
+        }
         
-        mirror(node->left);
-        mirror(node->right);
-        swap(node->left,node->right);
-    //   stack<Node*> st;
-    //   st.push(node);
-    //   while(!st.empty()){
-    //       Node* temp = st.top();
-    //       st.pop();
-    //       if(temp != NULL){
-    //             st.push(temp->left);
-    //             st.push(temp->right);
-    //             swap(temp->left,temp->right);
-    //       }
-           
-    //   }
-    //     cout<<node->data<<" ";
-
     }
 };
 
