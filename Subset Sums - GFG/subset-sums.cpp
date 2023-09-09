@@ -7,38 +7,22 @@ class Solution
 {
 public:
 
-void func(int index,int sum,vector<int>&arr,int N, vector<int> &sumsubset){
-    // if(index == N){
-    //     sumsubset.push_back(sum);
-    //     return;
-    // }
-    // func(index+1,sum + arr[index],arr,N,sumsubset);
-    // func(index+1,sum,arr,N,sumsubset);
-    
-    
-    if(index == N){
-        sumsubset.push_back(sum);
+void f(int i,vector<int>&arr, int N,int sum,vector<int>& ans){
+    if(i == N){
+        ans.push_back(sum);
         return;
     }
-    func(index+1,sum+ arr[index], arr,N,sumsubset);
-    func(index+1,sum,arr,N,sumsubset);
-}
     
-public:
+    f(i+1,arr,N,sum+arr[i],ans);
+    f(i+1,arr,N,sum,ans);
+}
     vector<int> subsetSums(vector<int> arr, int N)
     {
-        
-        // vector<int>sumsubset;
-        // func(0,0,arr,N,sumsubset);
-        // sort(sumsubset.begin(),sumsubset.end());
-        // return sumsubset;
-        
-        vector<int>sumsubset;
-        func(0,0,arr,N,sumsubset);
-        sort(sumsubset.begin(),sumsubset.end());
-        return sumsubset;
+        // Write Your Code here
+        vector<int>ans;
+        f(0,arr,N,0,ans);
+        return ans;
     }
-
 };
 
 //{ Driver Code Starts.
