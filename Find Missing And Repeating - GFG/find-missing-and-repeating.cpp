@@ -8,28 +8,43 @@ class Solution{
 public:
     vector<int> findTwoElement(vector<int> arr, int n) {
         // code here
-        // sort(arr.begin(),arr.end());
-        vector<int>temp(n+1,0);
+        
+        vector<int>freq(n+1,0);
         for(int i = 0;i<n;i++){
-            temp[arr[i]]++;
+                freq[arr[i]]++;
+            
         }
-        // int s = temp.size();
-        int repeat = -1,miss = -1;
+        int repeat = -1, miss= -1;
         for(int i = 1;i<=n;i++){
-            if(temp[i] == 0){
-                miss = i;
-            }
-            if(temp[i] == 2){
+            if(freq[i] == 2){
                 repeat = i;
             }
-            if(repeat != -1 && miss != -1){
-                break;
+            if(freq[i] == 0){
+                miss = i;
             }
         }
-        return { repeat, miss }; 
-        
+        return {repeat, miss};
     }
 };
+
+    // vector<int>temp(n+1,0);
+    //     for(int i = 0;i<n;i++){
+    //         temp[arr[i]]++;
+    //     }
+    //     // int s = temp.size();
+    //     int repeat = -1,miss = -1;
+    //     for(int i = 1;i<=n;i++){
+    //         if(temp[i] == 0){
+    //             miss = i;
+    //         }
+    //         if(temp[i] == 2){
+    //             repeat = i;
+    //         }
+    //         if(repeat != -1 && miss != -1){
+    //             break;
+    //         }
+    //     }
+    //     return { repeat, miss }; 
 
 //{ Driver Code Starts.
 
